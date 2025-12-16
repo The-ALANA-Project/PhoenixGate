@@ -11,10 +11,13 @@ Designed for real-world use, it helps event organizers and Web3 communities easi
 The first live pilot will be run with [**Digital Spenders Club**](https://www.spenders.club), exploring how tokenized memberships and AMP-priced access passes can power community-driven cultural events. Amplification and documentation of the outcomes will be supported by **The ALANA Project**.
 
 ## Chains Enabled
+- [x] Ethereum
+- [x] Polygon
+- [x] Gnosis
 - [x] Base
 - [x] Arbitrum
 - [x] Optimism
-- [ ] coming soon
+- [ ] more coming soon
 
 ## Core Goals
 - Make **onchain access frictionless** for event organizers and members.  
@@ -35,10 +38,12 @@ Phoenix Gate moves digital payments and memberships from speculation to everyday
 - Qualitative feedback from organizers and users.
 
 ## Internal Checklist
-- [ ] Functional app verifying Unlock-based tickets/memberships via burner.pro cards.
-- [ ] Finalize grant agreement and funding disbursement with AMP Foundation.  
+- [x] Functional Android app verifying Unlock-based tickets/memberships via burner.pro cards.
+- [ ] Functional iOS app verifying Unlock-based tickets/memberships via burner.pro cards.
+- [x] Finalize grant agreement with AMP Foundation.  
 - [ ] Complete MVP repo structure and mobile build documentation.  
-- [ ] Complete testing of the Android and iOS version for publication.
+- [ ] Complete testing and upload of the Android App to the Google Play store.
+- [ ] Complete testing and upload of the iOS App to the AppStore.
 - [ ] Digital Spenders Club AMP lock deployment and membership pricing in AMP.    
 - [ ] Schedule pilot event and onboarding sessions (Q1 2026).  
 - [ ] Publish technical documentation and community-facing guide via GitHub.
