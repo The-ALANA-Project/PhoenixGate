@@ -59,7 +59,7 @@ Phoenix Gate brings those worlds together. It shows how onchain credentials and 
 - **Lead Coordination & Product Design:** [Stella Achenbach](https://www.linkedin.com/in/stella-achenbach/)
 - **Lead Developer:** [Karel Rääli](https://github.com/KarelRli)
 - **Core Partners:** [Unlock Protocol](https://unlock-protocol.com/), [burner.pro](https://www.burner.pro/), [Digital Spenders Club](https://www.spenders.club)  
-- **Amplification & Documentation:** [The ALANA Project](https://the-alana-project.xyz/)  
+- **Amplification & Documentation:** [The ALANA Project](https://paragraph.com/@the-alana-project)  
 
 ## License
 Released under the **MIT License**.  
