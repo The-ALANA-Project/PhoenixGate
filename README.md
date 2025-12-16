@@ -2,13 +2,16 @@
 ### Unlock Protocol x burner.pro x Digital Spenders Club  
 _managed by The ALANA Project_
 
-<img width="3371" height="905" alt="Phoenix Logo" src="https://github.com/user-attachments/assets/2933a298-9342-4f8b-b513-943b02e8a226" />
+<img width="3371" height="905" alt="Phoenix Logoe" src="https://github.com/user-attachments/assets/f21fb2b5-0768-4ba9-bcad-76275f3b62cd" />
 
 ## Overview
-Phoenix Gate is a mobile app (iOS/Android) enabling seamless verification of **Unlock Protocol**-based tickets and memberships using [**burner.pro**](https://www.burner.pro/) hardware wallet cards across multiple chains.  
-Designed for real-world use, it helps event organizers and Web3 communities easily connect onchain credentials with IRL experiences—securely, simply, and without complex wallet setup.
+Phoenix Gate is a mobile app (iOS/Android) that enables event organizers and communities to verify onchain ticket and membership ownership using [**Unlock Protocol**](https://unlock-protocol.com/), with credentials stored on [**burner.pro**](https://www.burner.pro/) hardware wallet cards across multiple chains.  
 
-The first live pilot will be run with [**Digital Spenders Club**](https://www.spenders.club), exploring how tokenized memberships and AMP-priced access passes can power community-driven cultural events. Amplification and documentation of the outcomes will be supported by **The ALANA Project**.
+Its core use case is real-world access control for conferences and side events—settings that drive meaningful networking, collaboration, and creativity across the Web3 ecosystem. Today, most of these events rely on centralized ticketing platforms and manual check-in processes. Phoenix Gate replaces this flow with a fully onchain access stack that is fast, reliable, and practical to run on-site.
+
+Attendees receive tickets or memberships issued via Unlock Protocol and store their credentials on a portable burner wallet card. At the venue, access is verified in seconds by the organizer with the Phoenix Gate app; no private key handling, or complicated setup required.  
+
+While the initial pilots explore token-based pricing using AMP in collaboration with [**Digital Spenders Club**](https://www.spenders.club), the broader objective is to normalize onchain credentials and payments as part of everyday cultural and professional gatherings. Over time, Phoenix Gate aims to make decentralized verification and tokenized access a default layer of the modern event experience.
 
 ## Chains Enabled
 - [x] Ethereum
@@ -20,22 +23,24 @@ The first live pilot will be run with [**Digital Spenders Club**](https://www.sp
 - [ ] more coming soon
 
 ## Core Goals
-- Make **onchain access frictionless** for event organizers and members.  
-- Enable **ticket and membership verification** via burner wallet cards.  
-- Support **payments and memberships priced in AMP** or other ERC-20 tokens.  
-- Create a **replicable model** for how decentralized tools can power IRL event coordination.  
-- Strengthen interoperability between **Unlock Protocol, burner.pro, AMP, and community-led projects**.  
+- Provide rapid, reliable, and user‑friendly **onchain ticket verification** for live events.  
+- Reduce event check‑in friction while maintaining accessibility for non‑technical attendees.  
+- Establish a **repeatable open‑source model** for decentralized access control at conferences and gatherings.  
+- Support **flexible token pricing and settlement**, with AMP and other assets integrated as examples of practical, real‑world usage.  
+- Strengthen collaboration across protocols and communities by demonstrating **interoperability between Unlock, burner.pro, and payment networks**. 
 
 ## Why It Matters
-Phoenix Gate moves digital payments and memberships from speculation to everyday cultural and community use. By aligning protocols and creators in a single access flow, it demonstrates that token-based coordination can extend meaningfully into real-world gatherings. 
+Event passes and memberships are one of the most tangible, high‑frequency ways people interact with value—digital or otherwise. Yet in Web3, these interactions often remain siloed between wallets, protocols, and ticketing services.
+
+Phoenix Gate brings those worlds together. It shows how onchain credentials and token settlements can underpin real‑world coordination, enabling crypto‑native access, verification, and payments in simple, portable flows. The project also serves as a blueprint for how different ecosystem players—wallet providers, DAOs, and payment networks—can work together to make tokenized experiences frictionless and inclusive. 
 
 ## Impact Tracking
-- Number of events/organizers using the Phoenix Gate stack.  
-- Burner card check-ins and active app installs.
-- Unlock-powered memberships granted.
-- AMP-priced tickets/memberships issued and redeemed.  
-- Reduction in onboarding friction for new participants.  
-- Qualitative feedback from organizers and users.
+- Number of conferences, organizers, and communities using Phoenix Gate in the first year.  
+- Number of **Unlock‑based tickets or memberships** issued and verified via burner wallet cards.  
+- Share of events adopting onchain pricing or settlement (AMP or comparable tokens).  
+- Average check‑in time per attendee and reduction in manual verification errors.  
+- Repository activity and open‑source adoption by external developers or communities.  
+- Qualitative feedback from organizers, attendees, and partners collected during pilot cycles.
 
 ## Internal Checklist
 - [x] Functional Android app verifying Unlock-based tickets/memberships via burner.pro cards.
