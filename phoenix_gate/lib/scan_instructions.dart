@@ -10,21 +10,24 @@ class ScanningInstructions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SecondaryBox(
+    final fontColor =
+        Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.font;
+    
+    final highlightColor = Theme.of(context).textSelectionTheme.cursorColor ?? AppColors.fontHighlight;
+
+    return SecondaryBox(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Title
           Row(
             children: [
-              Icon(Icons.circle, color: AppColors.white, size: bigCircleRadius),
-              SizedBox(width: 8.0),
               Text(
                 'How to Scan',
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.black,
+                  color: highlightColor,
                 ),
               ),
             ],
@@ -32,11 +35,13 @@ class ScanningInstructions extends StatelessWidget {
 
           // Instructions
           SizedBox(height: 12.0),
-          _Instruction('Ensure NFC is enabled on your device'),
-          SizedBox(height: 12.0),
-          _Instruction('Hold the Burner.pro card within 2cm of your phone'),
-          SizedBox(height: 12.0),
-          _Instruction('Keep the card steady during verification'),
+          const _Instruction('Ensure NFC is enabled on your device'),
+          const SizedBox(height: 12.0),
+          const _Instruction(
+            'Hold the Burner.pro card within 2cm of your phone',
+          ),
+          const SizedBox(height: 12.0),
+          const _Instruction('Keep the card steady during verification'),
         ],
       ),
     );
@@ -44,25 +49,22 @@ class ScanningInstructions extends StatelessWidget {
 }
 
 class _Instruction extends StatelessWidget {
-  const _Instruction(this.text, {super.key});
+  const _Instruction(this.text);
 
   final String text;
 
   @override
   Widget build(BuildContext context) {
+    final fontColor =
+        Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.font;
+
     return Row(
       children: [
-        SizedBox(width: (bigCircleRadius - smallCircleRadius) / 2),
-        Icon(Icons.circle, color: AppColors.black, size: smallCircleRadius),
-        SizedBox(width: 8.0),
+        const SizedBox(width: (bigCircleRadius - smallCircleRadius) / 2),
+        Icon(Icons.circle, color: fontColor, size: smallCircleRadius),
+        const SizedBox(width: 8.0),
         Expanded(
-          child: Text(
-            text,
-            style: TextStyle(
-              fontSize: 14,
-              color: AppColors.black,
-            ),
-          ),
+          child: Text(text, style: TextStyle(fontSize: 14, color: fontColor)),
         ),
       ],
     );

@@ -2,13 +2,10 @@ import 'package:flutter/foundation.dart';
 import 'package:phonix_scanner/models/blockchain_networks.dart';
 
 class ContractModel extends ChangeNotifier {
-  String _name = '';
 
   String _contractAddress = '';
 
   BlockchainNetworks? _blockchain;
-
-  String get name => _name;
 
   String get contractAddress => _contractAddress;
 
@@ -28,12 +25,6 @@ class ContractModel extends ChangeNotifier {
   static bool _checkAddressPattern(String address) {
     final pattern = RegExp(r'^0x[a-fA-F0-9]{40}$');
     return pattern.hasMatch(address);
-  }
-
-  set name(String value) {
-    if (value == _name) return;
-    _name = value;
-    notifyListeners();
   }
 
   set contractAddress(String value) {

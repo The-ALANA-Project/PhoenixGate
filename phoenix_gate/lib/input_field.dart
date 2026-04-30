@@ -23,6 +23,10 @@ class InputField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final highlightColor =
+        Theme.of(context).textSelectionTheme.cursorColor ??
+        AppColors.fontHighlight;
+
     final border = OutlineInputBorder(
       borderRadius: BorderRadius.circular(10.0),
       borderSide: const BorderSide(
@@ -39,6 +43,7 @@ class InputField extends StatelessWidget {
           onChanged: onChanged,
           keyboardType: keyboardType,
           obscureText: obscureText,
+          cursorColor: highlightColor,
           decoration: InputDecoration(
             filled: true,
             fillColor: AppColors.white30,

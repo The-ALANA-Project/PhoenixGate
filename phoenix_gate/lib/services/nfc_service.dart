@@ -1,4 +1,5 @@
-import 'dart:typed_data';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:nfc_manager/nfc_manager.dart';
 import 'package:nfc_manager_ndef/nfc_manager_ndef.dart';
 import 'package:convert/convert.dart';
@@ -7,6 +8,10 @@ import 'package:pointycastle/digests/keccak.dart';
 class NfcService {
   static bool _isAvailable = false;
   static bool get isAvailable => _isAvailable;
+
+  static const MethodChannel _iosNdefChannel = MethodChannel('phonix_scanner/nfc_ndef');
+
+  static bool get _isIOS => !kIsWeb && defaultTargetPlatform == TargetPlatform.iOS;
 
   static Future<bool> initialize() async {
     try {
@@ -21,6 +26,20 @@ class NfcService {
   static Future<String?> startNfcSession() async {
     if (!_isAvailable) {
       throw Exception('NFC is not available on this device');
+    }
+
+    if (_isIOS) {
+      final String? extracted = await _iosNdefChannel.invokeMethod<String>(
+        'startNdefSession',
+        {
+          'alertMessage': 'Hold your iPhone near the Burner card.',
+          'invalidateAfterFirstRead': true,
+        },
+      );
+      if (extracted == null || extracted.isEmpty) {
+        return null;
+      }
+      return _walletAddressFromExtractedString(extracted);
     }
 
     String? result;
@@ -42,7 +61,7 @@ class NfcService {
         pollingOptions: {
           NfcPollingOption.iso14443,
           NfcPollingOption.iso15693,
-          NfcPollingOption.iso18092,
+          //NfcPollingOption.iso18092,
           ...NfcPollingOption.values,
         },
       );
@@ -73,6 +92,10 @@ class NfcService {
 
   static Future<void> stopSession() async {
     try {
+      if (_isIOS) {
+        await _iosNdefChannel.invokeMethod<void>('stopSession');
+        return;
+      }
       await NfcManager.instance.stopSession();
     } catch (e) {
       // Todo: handle error if needed
@@ -97,28 +120,7 @@ class NfcService {
                 Uint8List payloadBytes = ndefMessage.records.first.payload;
                 String url = String.fromCharCodes(payloadBytes);
 
-                RegExp regex = RegExp(r'pkN=([a-fA-F0-9]+)&attN');
-                var match = regex.firstMatch(url);
-
-                if (match == null) {
-                  throw ArgumentError('No valid pkN=...&attN substring found');
-                }
-
-                String extracted = match.group(1)!;
-
-                // Step 2: Remove the first 6 characters (4 char prefix added by the card and the 04 byte)
-                if (extracted.length <= 6) {
-                  throw ArgumentError('The extracted string is too short');
-                }
-                String modified = extracted.substring(6);
-
-                List<int> bytes = hex.decode(modified);
-
-                final keccak = KeccakDigest(256);
-                final hash = keccak.process(Uint8List.fromList(bytes));
-
-                final last20 = hex.encode(hash.sublist(hash.length - 20));
-                return '0x$last20';
+                return _walletAddressFromExtractedString(url);
               } else {
                 throw ArgumentError('NDEF record payload is empty');
               }
@@ -138,5 +140,32 @@ class NfcService {
     }
     
     return null;
+  }
+
+  static String? _walletAddressFromExtractedString(String extractedString) {
+    try {
+      final regex = RegExp(r'pkN=([a-fA-F0-9]+)&attN');
+      final match = regex.firstMatch(extractedString);
+
+      if (match == null) {
+        return null;
+      }
+
+      final extracted = match.group(1);
+      if (extracted == null || extracted.length <= 6) {
+        return null;
+      }
+
+      // Remove the first 6 characters (4 char prefix added by the card and the 04 byte)
+      final modified = extracted.substring(6);
+      final bytes = hex.decode(modified);
+
+      final keccak = KeccakDigest(256);
+      final hash = keccak.process(Uint8List.fromList(bytes));
+      final last20 = hex.encode(hash.sublist(hash.length - 20));
+      return '0x$last20';
+    } catch (_) {
+      return null;
+    }
   }
 }

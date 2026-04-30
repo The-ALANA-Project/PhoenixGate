@@ -10,14 +10,14 @@ class TextBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final fontColor =
+        Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.font;
+
     return SecondaryBox(
       child: Text(
         text,
         textAlign: alignment,
-        style: const TextStyle(
-          fontSize: 14.0,
-          color: AppColors.black,
-        ),
+        style: TextStyle(fontSize: 14.0, color: fontColor),
       ),
     );
   }

@@ -9,13 +9,16 @@ class SecondaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final fontColor =
+        Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.font;
+
     return ElevatedButton(
       onPressed: () {
         action();
       },
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.transparent,
-        foregroundColor: AppColors.black,
+        foregroundColor: fontColor,
         elevation: 0,
         side: const BorderSide(color: AppColors.white30, width: 1),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -23,12 +26,7 @@ class SecondaryButton extends StatelessWidget {
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            text,
-            style: const TextStyle(fontSize: 14),
-          ),
-        ],
+        children: [Text(text, style: const TextStyle(fontSize: 14))],
       ),
     );
   }

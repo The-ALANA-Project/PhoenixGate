@@ -25,7 +25,6 @@ class _ConfigurationBlockState extends State<ConfigurationBlock> {
     _addressController = TextEditingController();
 
     final model = Provider.of<ContractModel>(context, listen: false);
-    _nameController.text = model.name;
     _addressController.text = model.contractAddress;
   }
 
@@ -59,24 +58,6 @@ class _ConfigurationBlockState extends State<ConfigurationBlock> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: InputFieldTitle('Contract Name (Optional)'),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
-              child: InputField(
-                suggestion: 'e.g., VIP Membership Pass',
-                controller: _nameController,
-                onChanged: (value) {
-                  contractModel.name = value;
-                },
-              ),
-            ),
-            const SizedBox(height: 16.0),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: Align(

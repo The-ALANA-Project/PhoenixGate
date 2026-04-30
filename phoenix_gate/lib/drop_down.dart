@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:phonix_scanner/colors.dart';
 import 'package:phonix_scanner/models/blockchain_networks.dart';
+import 'package:provider/provider.dart';
+import 'package:phonix_scanner/models/settings_model.dart';
 
 
 class CustomDropDown extends StatefulWidget {
@@ -42,6 +44,7 @@ class CustomDropDownState extends State<CustomDropDown> {
               child: MenuWidget(
                 width: _buttonWidth,
                 items: widget.items,
+                selectedValue: widget.selectedValue,
                 onItemSelected: (item) {
                   widget.onChanged(item);
                   _tooltipController.hide();
@@ -55,9 +58,10 @@ class CustomDropDownState extends State<CustomDropDown> {
           child: Text(
             widget.selectedValue?.displayName ?? 'Select blockchain',
             style: TextStyle(
-              color: widget.selectedValue != null ? Colors.black : AppColors.hint,
+              color: widget.selectedValue != null
+                  ? Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.black
+                  : AppColors.hint,
               fontSize: 16,
-              
             ),
           ),
         ),
@@ -120,24 +124,27 @@ class MenuWidget extends StatelessWidget {
     super.key,
     this.width,
     required this.items,
+    this.selectedValue,
     required this.onItemSelected,
   });
 
   final double? width;
   final List<BlockchainNetworks> items;
   final ValueChanged<BlockchainNetworks> onItemSelected;
+  final BlockchainNetworks? selectedValue;
 
   @override
   Widget build(BuildContext context) {
+    final settings = Provider.of<SettingsModel>(context);
     return Container(
       width: width ?? 200,
       constraints: const BoxConstraints(maxHeight: 300),
       decoration: ShapeDecoration(
-        color: Colors.white,
+        color: settings.buttonColor,
         shape: RoundedRectangleBorder(
-          side: const BorderSide(
+          side: BorderSide(
             width: 1.5,
-            color: Colors.black26,
+            color: settings.buttonColor.withOpacity(0.9),
           ),
           borderRadius: BorderRadius.circular(12),
         ),
@@ -154,24 +161,38 @@ class MenuWidget extends StatelessWidget {
         shrinkWrap: true,
         padding: const EdgeInsets.all(4.0),
         itemCount: items.length,
-        itemBuilder: (context, index) {
+          itemBuilder: (context, index) {
           final item = items[index];
+          final isSelected = item == selectedValue;
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 0.0),
-            child: Material(
-              color: Colors.transparent,
+                child: Material(
+              color: isSelected ? settings.buttonColor.withOpacity(0.85) : settings.buttonColor,
               child: InkWell(
                 onTap: () => onItemSelected(item),
-                highlightColor: AppColors.backgroundPrimary,
+                highlightColor: Theme.of(context).scaffoldBackgroundColor,
                 borderRadius: BorderRadius.circular(8),
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-                  child: Text(
-                    item.displayName,
-                    style: const TextStyle(
-                      fontSize: 14,
-                      color: Colors.black87,
-                    ),
+                  color: Colors.transparent,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          item.displayName,
+                          style: const TextStyle(
+                            fontSize: 14,
+                            color: AppColors.backgroundPrimary,
+                          ),
+                        ),
+                      ),
+                      if (isSelected)
+                        Icon(
+                          Icons.check,
+                          size: 16,
+                          color: AppColors.backgroundPrimary,
+                        ),
+                    ],
                   ),
                 ),
               ),

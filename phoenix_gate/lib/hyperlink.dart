@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:phonix_scanner/colors.dart';
 
 class Hyperlink extends StatelessWidget {
   final String text;
@@ -7,7 +8,13 @@ class Hyperlink extends StatelessWidget {
   final Color color;
   final double? size;
 
-  const Hyperlink({super.key, required this.text, required this.url, required this.color, this.size = 14});
+  const Hyperlink({
+    super.key,
+    required this.text,
+    required this.url,
+    required this.color,
+    this.size = 14,
+  });
 
   Future<void> _launchUrl() async {
     final Uri uri = Uri.parse(url);
@@ -25,6 +32,7 @@ class Hyperlink extends StatelessWidget {
         style: TextStyle(
           color: color,
           decoration: TextDecoration.underline,
+          decorationColor: color,
           fontSize: size,
         ),
       ),

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:phonix_scanner/app_status_box.dart';
 import 'package:phonix_scanner/models/blockchain_networks.dart';
 import 'package:phonix_scanner/colors.dart';
 import 'package:phonix_scanner/contract_data_box.dart';
-import 'package:phonix_scanner/event_data_box.dart';
 import 'package:phonix_scanner/logo.dart';
 import 'package:phonix_scanner/nfc_scan_area.dart';
 import 'package:phonix_scanner/primary_button.dart';
@@ -11,8 +9,10 @@ import 'package:phonix_scanner/scan_instructions.dart';
 import 'package:phonix_scanner/hyperlink.dart';
 import 'package:provider/provider.dart';
 import 'package:phonix_scanner/models/contract_model.dart';
+import 'package:phonix_scanner/screens/settings_screen.dart';
 import 'package:phonix_scanner/services/nfc_service.dart';
 import 'package:phonix_scanner/services/blockchain_service.dart';
+import 'package:phonix_scanner/footer.dart';
 
 class ScanningScreen extends StatefulWidget {
   const ScanningScreen({super.key});
@@ -31,10 +31,58 @@ class _ScanningScreenState extends State<ScanningScreen> {
   // null = unknown/not checked yet, true = owns nft, false = does not own
   bool? ownershipResult;
 
+  final List<String> _logs = [];
+
+  Future<void> _openSettingsSheet(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+
+    return showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      useSafeArea: true,
+      backgroundColor: Colors.transparent,
+      builder: (_) => SizedBox(
+        height: screenHeight * 0.8,
+        child: const SettingsScreen(isBottomSheet: true),
+      ),
+    );
+  }
+
   @override
   void initState() {
     super.initState();
     _initializeNfc();
+    _runOwnershipTest();
+  }
+
+  Future<void> _runOwnershipTest() async {
+    const testWallet = '0xaBD303449eFCB3d266bC2a2e4448c89E4a652d99';
+    const testContract = '0x399dd7186e6c696306909c9d08f5ae23b0e9c6f5';
+    const testNetwork = BlockchainNetworks.base;
+
+    setState(() {
+      _logs.add('--- Running Static Ownership Test ---');
+    });
+
+    try {
+      final result = await BlockchainService.checkNftOwnership(
+        testNetwork,
+        testContract,
+        testWallet,
+      );
+      setState(() {
+        _logs.add('Test Result: Ownership = ${result.ownership}');
+        if (result.error != null) {
+          _logs.add('Test Error: ${result.error}');
+        }
+        _logs.addAll(result.logs);
+        _logs.add('--- Static Ownership Test Finished ---');
+      });
+    } catch (e) {
+      setState(() {
+        _logs.add('!!! Static Ownership Test Failed: $e !!!');
+      });
+    }
   }
 
   Future<void> _initializeNfc() async {
@@ -94,7 +142,7 @@ class _ScanningScreenState extends State<ScanningScreen> {
 
   Future<void> _checkNftOwnership(String addressToCheck) async {
     final contractModel = context.read<ContractModel>();
-    
+
     if (!contractModel.isValid) {
       setState(() {
         ownershipError = 'Invalid contract configuration';
@@ -106,6 +154,8 @@ class _ScanningScreenState extends State<ScanningScreen> {
       isCheckingOwnership = true;
       ownershipError = null;
       ownershipResult = null;
+      _logs.clear();
+      _logs.add('--- Checking NFT Ownership ---');
     });
 
     try {
@@ -117,14 +167,17 @@ class _ScanningScreenState extends State<ScanningScreen> {
 
       setState(() {
         ownershipResult = owns.ownership;
-        nfcError = owns.error;
+        ownershipError = owns.error;
         isCheckingOwnership = false;
+        _logs.addAll(owns.logs);
+        _logs.add('--- Ownership Check Finished ---');
       });
     } catch (e) {
       setState(() {
         ownershipError = 'Failed to check ownership: $e';
         isCheckingOwnership = false;
         ownershipResult = null;
+        _logs.add('!!! Ownership Check Failed: $e !!!');
       });
     }
   }
@@ -132,7 +185,25 @@ class _ScanningScreenState extends State<ScanningScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.backgroundPrimary,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => Navigator.pop(context),
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        iconTheme: IconThemeData(
+          color:
+              Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.font,
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () => _openSettingsSheet(context),
+          ),
+        ],
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),
@@ -145,28 +216,27 @@ class _ScanningScreenState extends State<ScanningScreen> {
                 const Logo(size: 75, isAnimated: true),
 
                 const SizedBox(height: 20),
-                const Text(
+                Text(
                   'Event Access',
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
-                    color: AppColors.black,
+                    color:
+                        Theme.of(context).textSelectionTheme.cursorColor ??
+                        AppColors.font,
                   ),
                 ),
 
                 const SizedBox(height: 20),
-                const Text(
+                Text(
                   'Verify NFT membership with NFC scan',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 16,
-                    color: AppColors.black,
+                    color:
+                        Theme.of(context).textTheme.bodyMedium?.color ??
+                        AppColors.font,
                   ),
-                ),
-
-                const SizedBox(height: 20),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                  child: EventDataBox(),
                 ),
 
                 const SizedBox(height: 20),
@@ -175,9 +245,10 @@ class _ScanningScreenState extends State<ScanningScreen> {
                   child: Consumer<ContractModel>(
                     builder: (context, model, child) {
                       return ContractDataBox(
-                        contractName: model.name,
-                        blockchain: model.blockchain ?? BlockchainNetworks.ethereumMainnet,
-                        address: model.contractAddress
+                        blockchain:
+                            model.blockchain ??
+                            BlockchainNetworks.ethereumMainnet,
+                        address: model.contractAddress,
                       );
                     },
                   ),
@@ -186,33 +257,17 @@ class _ScanningScreenState extends State<ScanningScreen> {
                 const SizedBox(height: 20),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                  child: const AppStatusBox(),
-                ),
-
-                const SizedBox(height: 20),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
                   child: NfcScanArea(
                     scanning: isScanning,
                     ownershipResult: ownershipResult,
+                    onTap: () {
+                      if (isScanning) {
+                        _cancelNfcScan();
+                      } else {
+                        _startNfcScan();
+                      }
+                    },
                   ),
-                ),
-
-                const SizedBox(height: 12.0),
-
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                  child: PrimaryButton(
-                        isScanning ? "Scanning..." : "Start NFC Scan",
-                        () {
-                          if (isScanning) {
-                            _cancelNfcScan();
-                          } else {
-                            _startNfcScan();
-                          }
-                        },
-                        icon: isScanning ? null : Icons.arrow_forward,
-                      ),
                 ),
 
                 const SizedBox(height: 24.0),
@@ -221,57 +276,83 @@ class _ScanningScreenState extends State<ScanningScreen> {
                   child: const ScanningInstructions(),
                 ),
 
-                const SizedBox(height: 36.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      'Powered By ',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: AppColors.black,
-                      ),
-                    ),
-                    Hyperlink(
-                      text: 'Unlock Protocol',
-                      url: 'https://unlock-protocol.com/',
-                      color: AppColors.black,
-                    ),
-                    const Text(
-                      ' x ',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: AppColors.black,
-                      ),
-                    ),
-                    Hyperlink(
-                      text: 'Burner.pro',
-                      url: 'https://www.burner.pro/',
-                      color: AppColors.black,
-                    ),
-                  ],
-                ),
-                Text(
-                  walletAddress != null
-                      ? 'Wallet Address: $walletAddress'
-                      : nfcError != null
-                          ? 'Error: $nfcError'
+                //Text(
+                //  walletAddress != null
+                //      ? 'Wallet Address: $walletAddress'
+                //      : nfcError != null
+                //          ? 'Error: $nfcError'
+                //          : '',
+                //),
+                if (walletAddress != null || nfcError != null)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: Text(
+                      walletAddress != null
+                          ? 'Wallet Address: $walletAddress'
+                          : nfcError != null
+                          ? 'NFC Error: $nfcError'
                           : '',
-                ),
-
-                Text(
-                  ownershipError != null ? 'Error: $ownershipError' : '',
-                  style: const TextStyle(color: Colors.red),
-                ),
-                Text(
-                  nfcError != null ? 'Error: $nfcError' : '',
-                  style: const TextStyle(color: Colors.red),
-                )
+                      style: TextStyle(
+                        color: nfcError != null
+                            ? Colors.red
+                            : Theme.of(context).textTheme.bodyMedium?.color ??
+                                  AppColors.black,
+                      ),
+                    ),
+                  ),
+                if (ownershipError != null)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: Text(
+                      'Ownership Error: $ownershipError',
+                      style: const TextStyle(color: Colors.red),
+                    ),
+                  ),
+                /*
+                if (_logs.isNotEmpty)
+                  Container(
+                    margin: const EdgeInsets.all(24.0),
+                    padding: const EdgeInsets.all(12.0),
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      borderRadius: BorderRadius.circular(8.0),
+                      border: Border.all(color: Colors.grey[400]!),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Logs:',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(height: 8.0),
+                        ..._logs.map(
+                          (log) => Text(
+                            log,
+                            style: const TextStyle(
+                              fontFamily: 'monospace',
+                              fontSize: 10,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                */
+                //Text(
+                //  ownershipError != null ? 'Error: $ownershipError' : '',
+                //  style: const TextStyle(color: Colors.red),
+                //),
+                //Text(
+                //  nfcError != null ? 'Error: $nfcError' : '',
+                //  style: const TextStyle(color: Colors.red),
+                //)
               ],
             ),
           ),
         ),
       ),
+      bottomNavigationBar: const Footer(),
     );
   }
 }
