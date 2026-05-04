@@ -75,6 +75,7 @@ How to invite people to the Testflight version
 - [ ] Collect feedback, metrics, and finalize post-pilot report.  
 - [ ] Prepare follow-up dev roadmap.
 
+## Team & License
 
 ### Team
 - **Lead Coordination & Product Design:** [Stella Achenbach](https://www.linkedin.com/in/stella-achenbach/)
