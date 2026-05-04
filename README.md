@@ -25,7 +25,6 @@ Event passes and memberships are one of the most tangible, high‑frequency ways
 
 Phoenix Gate brings those worlds together. It shows how onchain credentials and token settlements can underpin real‑world coordination, enabling crypto‑native access, verification, and payments in simple, portable flows. The project also serves as a blueprint for how different ecosystem players—wallet providers, DAOs, and payment networks—can work together to make tokenized experiences frictionless and inclusive. 
 
----
 
 ## Features
 We think of the whole app as a feature in itself, as it extends the use cases of Unlock Protocol and burner.pro. But to be more precise, additional features are the diverse selection of EVM chains available and the branded customization feature. Here are some more details about both:
@@ -40,7 +39,7 @@ We think of the whole app as a feature in itself, as it extends the use cases of
 
 ### Customization Feature
 
----
+
 
 ## Internal Tracking
 
@@ -67,7 +66,6 @@ How to invite people to the Testflight version
 - [ ] Collect feedback, metrics, and finalize post-pilot report.  
 - [ ] Prepare follow-up dev roadmap.
 
----
 
 ### Team
 - **Lead Coordination & Product Design:** [Stella Achenbach](https://www.linkedin.com/in/stella-achenbach/)
