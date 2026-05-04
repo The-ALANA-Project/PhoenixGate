@@ -27,18 +27,27 @@ Phoenix Gate brings those worlds together. It shows how onchain credentials and 
 
 
 ## Features
-We think of the whole app as a feature in itself, as it extends the use cases of Unlock Protocol and burner.pro. But to be more precise, additional features are the diverse selection of EVM chains available and the branded customization feature. Here are some more details about both:
+
+Phoenix Gate is designed as a cohesive access layer that extends the capabilities of **Unlock Protocol** and **burner.pro** into real-world environments. Rather than a collection of isolated tools, the app delivers a unified experience for onchain access, verification, and event coordination. Key features include multi-chain support and flexible branding for event organizers:
 
 ### Chains Enabled
-- [x] Ethereum
-- [x] Polygon
-- [x] Optimism
-- [x] Arbitrum One
-- [x] Base
-- [x] Gnosis
+Phoenix Gate supports multiple popular EVM-compatible networks, allowing organizers to issue and verify access credentials across the ecosystems they already use. This multi-chain compatibility ensures flexibility in deployment, lower transaction costs where needed, and broader interoperability across communities.
 
-### Customization Feature
+- [x] Ethereum  
+- [x] Polygon  
+- [x] Optimism  
+- [x] Arbitrum One  
+- [x] Base  
+- [x] Gnosis  
 
+### Customization & Branding
+The application is built to be fully customizable by event organizers and partners. This allows each users of Phoenix Gate to reflect the identity of the hosting brand or community.
+
+- Custom color schemes across the app interface  
+- Logo and visual asset integration  
+- Brand-aligned check-in experience for attendees  
+
+When guests arrive, and their membership or ticket is verified via their burner card, they interact with an interface that feels native to the event, reinforcing brand identity while maintaining a seamless onchain experience.
 
 
 ## Internal Tracking
