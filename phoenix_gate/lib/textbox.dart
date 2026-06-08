@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:phonix_scanner/colors.dart';
-import 'package:phonix_scanner/secondary_box.dart';
+import 'package:phoenix_gate/colors.dart';
+import 'package:phoenix_gate/secondary_box.dart';
 
 class TextBox extends StatelessWidget {
   const TextBox(this.text, this.alignment, {super.key});

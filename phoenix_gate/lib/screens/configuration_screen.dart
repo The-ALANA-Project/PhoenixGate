@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:phonix_scanner/colors.dart';
-import 'package:phonix_scanner/configuration_block.dart';
-import 'package:phonix_scanner/logo.dart';
-import 'package:phonix_scanner/primary_button.dart';
-import 'package:phonix_scanner/textbox.dart';
-import 'package:phonix_scanner/secondary_button.dart';
-import 'package:phonix_scanner/models/contract_model.dart';
-import 'package:phonix_scanner/screens/settings_screen.dart';
-import 'package:phonix_scanner/footer.dart';
+import 'package:phoenix_gate/colors.dart';
+import 'package:phoenix_gate/configuration_block.dart';
+import 'package:phoenix_gate/logo.dart';
+import 'package:phoenix_gate/primary_button.dart';
+import 'package:phoenix_gate/textbox.dart';
+import 'package:phoenix_gate/secondary_button.dart';
+import 'package:phoenix_gate/models/contract_model.dart';
+import 'package:phoenix_gate/screens/settings_screen.dart';
+import 'package:phoenix_gate/footer.dart';
 
 class ConfigurationScreen extends StatelessWidget {
   const ConfigurationScreen({super.key});

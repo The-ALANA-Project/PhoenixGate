@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:phonix_scanner/models/blockchain_networks.dart';
+import 'package:phoenix_gate/models/blockchain_networks.dart';
 
 class ContractModel extends ChangeNotifier {
 

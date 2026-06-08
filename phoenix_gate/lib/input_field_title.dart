@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:phonix_scanner/colors.dart';
+import 'package:phoenix_gate/colors.dart';
 
 class InputFieldTitle extends StatelessWidget {
   const InputFieldTitle(this.title, {super.key});

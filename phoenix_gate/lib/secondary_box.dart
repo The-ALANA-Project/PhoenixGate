@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:phonix_scanner/colors.dart';
+import 'package:phoenix_gate/colors.dart';
 
 class SecondaryBox extends StatelessWidget {
   const SecondaryBox({super.key, required this.child});

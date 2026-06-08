@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:phonix_scanner/models/blockchain_networks.dart';
-import 'package:phonix_scanner/colors.dart';
-import 'package:phonix_scanner/contract_data_box.dart';
-import 'package:phonix_scanner/logo.dart';
-import 'package:phonix_scanner/nfc_scan_area.dart';
-import 'package:phonix_scanner/primary_button.dart';
-import 'package:phonix_scanner/scan_instructions.dart';
-import 'package:phonix_scanner/hyperlink.dart';
+import 'package:phoenix_gate/models/blockchain_networks.dart';
+import 'package:phoenix_gate/colors.dart';
+import 'package:phoenix_gate/contract_data_box.dart';
+import 'package:phoenix_gate/logo.dart';
+import 'package:phoenix_gate/nfc_scan_area.dart';
+import 'package:phoenix_gate/primary_button.dart';
+import 'package:phoenix_gate/scan_instructions.dart';
+import 'package:phoenix_gate/hyperlink.dart';
 import 'package:provider/provider.dart';
-import 'package:phonix_scanner/models/contract_model.dart';
-import 'package:phonix_scanner/screens/settings_screen.dart';
-import 'package:phonix_scanner/services/nfc_service.dart';
-import 'package:phonix_scanner/services/blockchain_service.dart';
-import 'package:phonix_scanner/footer.dart';
+import 'package:phoenix_gate/models/contract_model.dart';
+import 'package:phoenix_gate/screens/settings_screen.dart';
+import 'package:phoenix_gate/services/nfc_service.dart';
+import 'package:phoenix_gate/services/blockchain_service.dart';
+import 'package:phoenix_gate/footer.dart';
 
 class ScanningScreen extends StatefulWidget {
   const ScanningScreen({super.key});

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:phonix_scanner/colors.dart';
-import 'package:phonix_scanner/models/blockchain_networks.dart';
+import 'package:phoenix_gate/colors.dart';
+import 'package:phoenix_gate/models/blockchain_networks.dart';
 import 'package:provider/provider.dart';
-import 'package:phonix_scanner/models/settings_model.dart';
+import 'package:phoenix_gate/models/settings_model.dart';
 
 
 class CustomDropDown extends StatefulWidget {

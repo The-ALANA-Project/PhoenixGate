@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:phonix_scanner/colors.dart';
+import 'package:phoenix_gate/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'dart:typed_data';

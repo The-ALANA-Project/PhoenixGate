@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:phonix_scanner/colors.dart';
+import 'package:phoenix_gate/colors.dart';
 
 class Hyperlink extends StatelessWidget {
   final String text;

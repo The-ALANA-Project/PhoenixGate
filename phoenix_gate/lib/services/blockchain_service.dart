@@ -1,5 +1,5 @@
 import 'package:http/http.dart';
-import 'package:phonix_scanner/models/blockchain_networks.dart';
+import 'package:phoenix_gate/models/blockchain_networks.dart';
 import 'package:web3dart/web3dart.dart' as web3dart;
 import 'package:web3dart/web3dart.dart';
 

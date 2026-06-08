@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:phonix_scanner/colors.dart';
-import 'package:phonix_scanner/input_field.dart';
-import 'package:phonix_scanner/input_field_title.dart';
-import 'package:phonix_scanner/drop_down.dart';
-import 'package:phonix_scanner/models/blockchain_networks.dart';
-import 'package:phonix_scanner/models/contract_model.dart';
+import 'package:phoenix_gate/colors.dart';
+import 'package:phoenix_gate/input_field.dart';
+import 'package:phoenix_gate/input_field_title.dart';
+import 'package:phoenix_gate/drop_down.dart';
+import 'package:phoenix_gate/models/blockchain_networks.dart';
+import 'package:phoenix_gate/models/contract_model.dart';
 import 'package:provider/provider.dart';
 
 class ConfigurationBlock extends StatefulWidget {

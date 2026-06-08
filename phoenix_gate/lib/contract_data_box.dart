@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:phonix_scanner/models/blockchain_networks.dart';
-import 'package:phonix_scanner/colors.dart';
-import 'package:phonix_scanner/secondary_box.dart';
+import 'package:phoenix_gate/models/blockchain_networks.dart';
+import 'package:phoenix_gate/colors.dart';
+import 'package:phoenix_gate/secondary_box.dart';
 
 class ContractDataBox extends StatelessWidget {
   const ContractDataBox({

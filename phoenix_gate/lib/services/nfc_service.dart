@@ -9,7 +9,7 @@ class NfcService {
   static bool _isAvailable = false;
   static bool get isAvailable => _isAvailable;
 
-  static const MethodChannel _iosNdefChannel = MethodChannel('phonix_scanner/nfc_ndef');
+  static const MethodChannel _iosNdefChannel = MethodChannel('phoenix_gate/nfc_ndef');
 
   static bool get _isIOS => !kIsWeb && defaultTargetPlatform == TargetPlatform.iOS;
 

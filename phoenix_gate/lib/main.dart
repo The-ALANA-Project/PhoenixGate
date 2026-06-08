@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:phonix_scanner/models/contract_model.dart';
-import 'package:phonix_scanner/models/settings_model.dart';
-import 'package:phonix_scanner/screens/opening_screen.dart';
-import 'package:phonix_scanner/screens/configuration_screen.dart';
-import 'package:phonix_scanner/screens/scanning_screen.dart';
-import 'package:phonix_scanner/screens/settings_screen.dart';
+import 'package:phoenix_gate/models/contract_model.dart';
+import 'package:phoenix_gate/models/settings_model.dart';
+import 'package:phoenix_gate/screens/opening_screen.dart';
+import 'package:phoenix_gate/screens/configuration_screen.dart';
+import 'package:phoenix_gate/screens/scanning_screen.dart';
+import 'package:phoenix_gate/screens/settings_screen.dart';
 
 void main() {
   runApp(
@@ -15,13 +15,13 @@ void main() {
         ChangeNotifierProvider(create: (_) => ContractModel()),
         ChangeNotifierProvider(create: (_) => SettingsModel()),
       ],
-      child: const PhonixScanner(),
+      child: const PhoenixGate(),
     ),
   );
 }
 
-class PhonixScanner extends StatelessWidget {
-  const PhonixScanner({super.key});
+class PhoenixGate extends StatelessWidget {
+  const PhoenixGate({super.key});
 
   @override
   Widget build(BuildContext context) {

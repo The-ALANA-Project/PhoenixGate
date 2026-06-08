@@ -214,7 +214,7 @@ private final class IosNdefReaderChannel: NSObject, NFCNDEFReaderSessionDelegate
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
     if let controller = window?.rootViewController as? FlutterViewController {
-      let channel = FlutterMethodChannel(name: "phonix_scanner/nfc_ndef", binaryMessenger: controller.binaryMessenger)
+      let channel = FlutterMethodChannel(name: "phoenix_gate/nfc_ndef", binaryMessenger: controller.binaryMessenger)
       ndefReaderChannel.attach(to: channel)
     }
 

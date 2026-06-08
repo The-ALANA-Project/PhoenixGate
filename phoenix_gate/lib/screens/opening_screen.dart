@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:phonix_scanner/colors.dart';
-import 'package:phonix_scanner/footer.dart';
-import 'package:phonix_scanner/logo.dart';
-import 'package:phonix_scanner/hyperlink.dart';
-import 'package:phonix_scanner/screens/settings_screen.dart';
-import 'package:phonix_scanner/widgets/background_animation.dart';
+import 'package:phoenix_gate/colors.dart';
+import 'package:phoenix_gate/footer.dart';
+import 'package:phoenix_gate/logo.dart';
+import 'package:phoenix_gate/hyperlink.dart';
+import 'package:phoenix_gate/screens/settings_screen.dart';
+import 'package:phoenix_gate/widgets/background_animation.dart';
 
 class OpeningScreen extends StatelessWidget {
   const OpeningScreen({super.key});

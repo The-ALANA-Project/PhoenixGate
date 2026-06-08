@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:phonix_scanner/colors.dart';
+import 'package:phoenix_gate/colors.dart';
 
 class SecondaryButton extends StatelessWidget {
   const SecondaryButton(this.text, {super.key, required this.action});

@@ -1,6 +1,6 @@
 {
-    "name": "phonix_scanner",
-    "short_name": "phonix_scanner",
+    "name": "phoenix_gate",
+    "short_name": "phoenix_gate",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
