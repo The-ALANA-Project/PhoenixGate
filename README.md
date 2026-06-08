@@ -11,7 +11,7 @@ Its core use case is real-world access control for conferences and side eventsâ€
 
 Attendees receive tickets or memberships issued via Unlock Protocol and store their credentials on a portable burner wallet card. At the venue, the organizer verifies access in seconds using the Phoenix Gate app; no private key handling or complicated setup required.  
 
-While the initial pilots explore token-based pricing using AMP in collaboration with [**Digital Spenders Club**](https://www.spenders.club), the broader goal is to make onchain credentials and payments part of everyday cultural and professional gatherings. Over time, Phoenix Gate aims to make decentralized verification and tokenized access a default layer of the modern event experience.
+<img width="1920" height="1271" alt="PhoenixGate-How_it_works" src="https://github.com/user-attachments/assets/fac5c7b0-5c71-44a1-b7c6-e6c0ab770f30" />
 
 ### Core Goals
 - Provide rapid, reliable, and userâ€‘friendly **onchain ticket verification** for live events.  
