@@ -2,7 +2,7 @@
 ### Unlock Protocol x burner.pro x Digital Spenders Club  
 _managed by The ALANA Project_
 
-<img width="3371" height="905" alt="Phoenix Logoe" src="https://github.com/user-attachments/assets/f21fb2b5-0768-4ba9-bcad-76275f3b62cd" />
+<img width="1280" height="640" alt="PhoenixGate-SocialCrawler" src="https://github.com/user-attachments/assets/b055bf90-c26d-4b05-a539-6243db6c44b1" />
 
 ## Overview
 Phoenix Gate is a mobile app (iOS/Android) that enables event organizers and communities to verify onchain ticket and membership ownership using [**Unlock Protocol**](https://unlock-protocol.com/), with credentials stored on [**burner.pro**](https://www.burner.pro/) hardware wallet cards across multiple chains.  
@@ -77,10 +77,10 @@ When guests arrive, and their membership or ticket is verified via their burner 
 - [x] Finalize grant agreement with AMP Foundation. Grant received
 - [x] Complete MVP repo structure and mobile build documentation.  
 - [ ] Complete testing and upload of the Android App to the Google Play Store.
-- [ ] Complete testing and upload of the iOS App to the App Store.
+- [x] Complete testing and upload of the iOS App to the App Store.
 - [ ] Digital Spenders Club AMP lock deployment and membership pricing in AMP.    
 - [ ] Schedule pilot event and onboarding sessions (Q2 2026).  
-- [ ] Publish technical documentation and community-facing guide via GitHub.
+- [x] Publish technical documentation and community-facing guide via GitHub.
 - [ ] Collect feedback, metrics, and finalize post-pilot report.  
 - [ ] Prepare follow-up dev roadmap.
 
