@@ -44,7 +44,9 @@ The application is built to be fully customizable by event organizers and partne
 
 - Custom color schemes across the app interface  
 - Logo and visual asset integration  
-- Brand-aligned check-in experience for attendees  
+- Brand-aligned check-in experience for attendees
+
+<img width="1920" height="1271" alt="PhoenixGate-CustomizationFeature" src="https://github.com/user-attachments/assets/b005c3d6-6202-4510-b401-c40856eba76e" />
 
 When guests arrive, and their membership or ticket is verified via their burner card, they interact with an interface that feels native to the event, reinforcing brand identity while maintaining a seamless onchain experience.
 
