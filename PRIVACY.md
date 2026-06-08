@@ -2,7 +2,7 @@
 
 **Last updated:** June 8, 2026
 
-Phoenix Gate ("the app", "we", "us") is an open-source event access-verification
+Phoenix Gate ("the app", "we", "us") is an open-source event access verification
 app published by **Stella Achenbach** (part of The ALANA Project). This policy
 explains what the app does and does not do with information. It applies to the iOS
 and Android versions of Phoenix Gate.
@@ -19,13 +19,13 @@ your device.
 **1. NFC card data (burner.pro cards)**
 When an organizer taps an attendee's burner.pro card, the app reads the public
 wallet address and signature data from the card solely to verify on-chain
-membership or ticket ownership in real time. This data is processed on-device and
+Membership or ticket ownership in real time. This data is processed on-device and
 is **not** stored by the app after the verification check, and is **not** sent to
 us.
 
 **2. Blockchain queries (public RPC)**
 To verify ownership, the app sends the relevant wallet address and the
-organizer-provided Unlock Protocol contract address to public blockchain RPC
+organizer-provided Unlock Protocol contract address to the public blockchain RPC
 endpoints (for example, on Ethereum, Polygon, Optimism, Arbitrum One, Base, or
 Gnosis) to perform a read-only `balanceOf` lookup. These queries are handled by
 third-party public RPC providers under their own terms; the app does not control
@@ -47,7 +47,7 @@ branding image. Selected images remain on your device.
 - We do not collect names, emails, or contact information.
 - We do not use analytics or tracking SDKs.
 - We do not create user profiles or advertising identifiers.
-- We do not sell or share any data, because we do not collect any.
+- We do not sell or share any data because we do not collect any.
 
 ## Children's privacy
 
@@ -72,9 +72,9 @@ repository.
 Questions about this policy can be directed to **Stella Achenbach** (The ALANA
 Project).
 
-- Email: contact@stellaachenbach.com
+- Email: achenbach.stella@gmail.com
 - Project: https://github.com/The-ALANA-Project/PhoenixGate
 
 ---
 
-© 2025 The ALANA Project S.A.C. Source code released under the MIT License.
+© 2025 The ALANA Project. Source code released under the MIT License.
