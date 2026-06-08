@@ -2,7 +2,7 @@
 ### Unlock Protocol x burner.pro x Digital Spenders Club  
 _managed by The ALANA Project_
 
-<img width="3371" height="905" alt="Phoenix Logoe" src="https://github.com/user-attachments/assets/f21fb2b5-0768-4ba9-bcad-76275f3b62cd" />
+<img width="1280" height="640" alt="PhoenixGate-SocialCrawler" src="https://github.com/user-attachments/assets/b055bf90-c26d-4b05-a539-6243db6c44b1" />
 
 ## Overview
 Phoenix Gate is a mobile app (iOS/Android) that enables event organizers and communities to verify onchain ticket and membership ownership using [**Unlock Protocol**](https://unlock-protocol.com/), with credentials stored on [**burner.pro**](https://www.burner.pro/) hardware wallet cards across multiple chains.  
@@ -11,7 +11,7 @@ Its core use case is real-world access control for conferences and side eventsâ€
 
 Attendees receive tickets or memberships issued via Unlock Protocol and store their credentials on a portable burner wallet card. At the venue, the organizer verifies access in seconds using the Phoenix Gate app; no private key handling or complicated setup required.  
 
-While the initial pilots explore token-based pricing using AMP in collaboration with [**Digital Spenders Club**](https://www.spenders.club), the broader goal is to make onchain credentials and payments part of everyday cultural and professional gatherings. Over time, Phoenix Gate aims to make decentralized verification and tokenized access a default layer of the modern event experience.
+<img width="1920" height="1271" alt="PhoenixGate-How_it_works" src="https://github.com/user-attachments/assets/fac5c7b0-5c71-44a1-b7c6-e6c0ab770f30" />
 
 ### Core Goals
 - Provide rapid, reliable, and userâ€‘friendly **onchain ticket verification** for live events.  
@@ -77,10 +77,10 @@ When guests arrive, and their membership or ticket is verified via their burner 
 - [x] Finalize grant agreement with AMP Foundation. Grant received
 - [x] Complete MVP repo structure and mobile build documentation.  
 - [ ] Complete testing and upload of the Android App to the Google Play Store.
-- [ ] Complete testing and upload of the iOS App to the App Store.
+- [x] Complete testing and upload of the iOS App to the App Store.
 - [ ] Digital Spenders Club AMP lock deployment and membership pricing in AMP.    
 - [ ] Schedule pilot event and onboarding sessions (Q2 2026).  
-- [ ] Publish technical documentation and community-facing guide via GitHub.
+- [x] Publish technical documentation and community-facing guide via GitHub.
 - [ ] Collect feedback, metrics, and finalize post-pilot report.  
 - [ ] Prepare follow-up dev roadmap.
 
