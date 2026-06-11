@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     
     <application
-        android:label="phoenix_gate"
+        android:label="Phoenix Gate"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
