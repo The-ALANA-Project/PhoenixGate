@@ -201,26 +201,21 @@ class _NfcScanAreaState extends State<NfcScanArea>
     }
 
     // If there's an ownership result, show check or cross
-    if (widget.ownershipResult != null) {
-      if (widget.ownershipResult == true) {
-        final membershipBytes = SettingsModel.decodeImageBytes(
-          settings.membershipImageBase64,
-        );
-        if (membershipBytes != null) {
-          return Image.memory(
-            membershipBytes,
-            width: 96,
-            height: 96,
-            fit: BoxFit.contain,
-          );
-        }
-        return Icon(Icons.check_circle, color: AppColors.green, size: 96);
-      } else {
-        return Icon(Icons.cancel, color: Colors.red[700], size: 96);
-      }
+    if (widget.ownershipResult == true) {
+      // final membershipBytes = SettingsModel.decodeImageBytes(
+      //   settings.membershipImageBase64,
+      // );
+      // if (membershipBytes != null) {
+      //   return Image.memory(
+      //     membershipBytes,
+      //     width: 96,
+      //     height: 96,
+      //     fit: BoxFit.contain,
+      //   );
+      // }
+      return Icon(Icons.check_circle, color: AppColors.green, size: 96);
+    } else {
+      return Icon(Icons.cancel, color: Colors.red[700], size: 96);
     }
-
-    // Default when not scanning and no result
-    return _buildImagePlaceholder(settings);
   }
 }
