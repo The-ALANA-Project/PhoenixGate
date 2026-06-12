@@ -1,4 +1,4 @@
-package com.alanaproject.phoenixgate
+package com.stellaachenbach.phoenixgate
 
 import io.flutter.embedding.android.FlutterActivity
 
